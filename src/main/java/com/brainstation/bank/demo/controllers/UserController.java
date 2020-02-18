@@ -19,12 +19,13 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDTO save(@RequestBody User user) {
+    public String save(@RequestBody User user) {
         CustomPasswordGenerator customPasswordGenerator = new CustomPasswordGenerator();
         user.setPassword(customPasswordGenerator.generatePassayPassword());
         UserAge userAge = new UserAge();
         user.setAge(userAge.getAge(user.getBirthDate()));
-        return userService.save(user);
+        userService.save(user);
+        return customPasswordGenerator.generatePassayPassword();
     }
 
     @PutMapping

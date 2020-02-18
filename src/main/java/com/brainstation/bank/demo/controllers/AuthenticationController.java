@@ -29,9 +29,9 @@ public class AuthenticationController {
 
     @PostMapping
     public ResponseEntity signin(@RequestBody User user){
-            String username = user.getId();
+            String username = user.getUserId();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, user.getPassword()));
-            String token = jwtTokenProvider.createToken(username, this.userRepository.findUserByUserId(username).orElseThrow(() -> new UsernameNotFoundException("Username" + user.getId() + "not found" )));
+            String token = jwtTokenProvider.createToken(username, this.userRepository.findUserByUserId(username).orElseThrow(() -> new UsernameNotFoundException("Username" + user.getUserId() + "not found" )));
 
             Map<Object, Object> model = new HashMap<>();
             model.put("userName", username);
