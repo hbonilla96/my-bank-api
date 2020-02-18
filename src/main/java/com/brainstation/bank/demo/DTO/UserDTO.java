@@ -10,8 +10,11 @@ import java.util.Date;
 public class UserDTO {
 
     @Id
-    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private String id;
+    @Column(name="user_id")
+    private String userId;
     @Column(name = "name")
     private String name;
     @Column(name = "last_name")
@@ -37,6 +40,7 @@ public class UserDTO {
      so the repository doesn't work with the model*/
     public UserDTO(User user){
         this.id = user.getId();
+        this.userId = user.getUserId();
         this.name = user.getName();
         this.lastName = user.getLastName();
         this.birth_date = user.getBirthDate();

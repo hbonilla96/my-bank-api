@@ -3,7 +3,8 @@ package com.brainstation.bank.demo.models;
 import java.util.Date;
 
 public class User {
-    private String id;
+    private int id;
+    private String userId;
     private String name;
     private String lastName;
     private Date birthDate;
@@ -13,8 +14,9 @@ public class User {
     private String phoneNumber;
     private String password;
 
-    public User(String id, String name, String lastName, Date birthDate, int age, String email, String address, String phoneNumber, String password) {
+    public User(int id, String userId, String name, String lastName, Date birthDate, int age, String email, String address, String phoneNumber, String password) {
         this.id = id;
+        this.userId = userId;
         this.name = name;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -26,7 +28,7 @@ public class User {
     }
 
     public String getId() {
-        return id;
+        return userId;
     }
 
     public String getName() {
@@ -61,8 +63,12 @@ public class User {
         return password;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setId(String userId) {
+        this.userId = userId;
     }
 
     public void setName(String name) {
@@ -95,5 +101,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
