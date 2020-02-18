@@ -19,10 +19,20 @@ public class AccountServiceImpl extends AccountService {
 
     @Override
     public String generateAccountNumber(Account account) {
-        num++;
-        account.setAccountNumber(IBAN + num);
+        if(account.getType().equals("debit")){
+            // create colones account
+            num++;
+            account.setCurrency("colones");
+            account.setAccountNumber(IBAN + num);
+            accountRepository.save(new AccountDTO(account));
 
-        accountRepository.save(new AccountDTO(account));
+            //create dolar account
+            num++;
+            account.setCurrency("dolars");
+            account.setAccountNumber(IBAN + num);
+            accountRepository.save(new AccountDTO(account));
+        }
+        
         return "account created";
     }
 }
