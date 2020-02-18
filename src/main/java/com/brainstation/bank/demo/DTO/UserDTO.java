@@ -5,11 +5,11 @@ import com.brainstation.bank.demo.models.User;
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 @Table(name = "user")
 public class UserDTO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private String id;
     @Column(name = "name")
@@ -26,6 +26,12 @@ public class UserDTO {
     private String address;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name="password")
+    private String password;
+
+    public UserDTO(){
+
+    }
 
     /*This constructor converts de User to a DTO
      so the repository doesn't work with the model*/
@@ -38,5 +44,6 @@ public class UserDTO {
         this.email = user.getEmail();
         this.address = user.getAddress();
         this.phoneNumber = user.getPhoneNumber();
+        this.password = user.getPassword();
     }
 }
