@@ -31,8 +31,14 @@ public class AccountServiceImpl extends AccountService {
             account.setCurrency("dolars");
             account.setAccountNumber(IBAN + num);
             accountRepository.save(new AccountDTO(account));
+        }else {
+            if (account.getType().equals("credit")){
+                num++;
+                account.setCurrency("colones");
+                account.setAccountNumber(IBAN + num);
+                accountRepository.save(new AccountDTO(account));
+            }
         }
-        
-        return "account created";
+        return "account created" + " number: " + (IBAN + num);
     }
 }
