@@ -1,21 +1,19 @@
 package com.brainstation.bank.demo.models;
 
-import com.brainstation.bank.demo.enums.AccountTypes;
-
 public class Account {
     private int id;
     private String accountNumber;
-    private AccountTypes type;
+    private String type;
     private String currency;
-    private String amount;
+    private String balance;
     private int userId;
 
-    public Account(int id, String accountNumber, AccountTypes type, String currency, String amount, int userId) {
+    public Account(int id, String accountNumber, String type, String currency, String balance, int userId) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.type = type;
         this.currency = currency;
-        this.amount = amount;
+        this.balance = balance;
         this.userId = userId;
     }
 
@@ -27,7 +25,7 @@ public class Account {
         return accountNumber;
     }
 
-    public AccountTypes getType() {
+    public String getType() {
         return type;
     }
 
@@ -35,8 +33,8 @@ public class Account {
         return currency;
     }
 
-    public String getAmount() {
-        return amount;
+    public String getBalance() {
+        return balance;
     }
 
     public int getUserId() {
@@ -51,7 +49,7 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public void setType(AccountTypes type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -59,8 +57,8 @@ public class Account {
         this.currency = currency;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void setBalance(String balance) {
+        this.balance = balance;
     }
 
     public void setUserId(int userId) {

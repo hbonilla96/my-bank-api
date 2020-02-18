@@ -1,8 +1,6 @@
 package com.brainstation.bank.demo.DTO;
 
-import com.brainstation.bank.demo.enums.AccountTypes;
 import com.brainstation.bank.demo.models.Account;
-import com.brainstation.bank.demo.models.User;
 
 import javax.persistence.*;
 
@@ -17,11 +15,11 @@ public class AccountDTO {
     @Column(name = "account_number")
     private String accountNumber;
     @Column(name = "type")
-    private AccountTypes type;
+    private String type;
     @Column(name = "currency")
     private String currency;
-    @Column(name = "amount")
-    private String amount;
+    @Column(name = "balance")
+    private String balance;
     @Column(name = "user_id")
     private int userId;
 
@@ -30,7 +28,7 @@ public class AccountDTO {
         this.accountNumber = account.getAccountNumber();
         this.type = account.getType();
         this.currency = account.getCurrency();
-        this.amount = account.getAmount();
+        this.balance = account.getBalance();
         this.userId = account.getUserId();
     }
 }
