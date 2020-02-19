@@ -7,6 +7,8 @@ import com.brainstation.bank.demo.models.User;
 import com.brainstation.bank.demo.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1/user")
@@ -19,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping
-    public String save(@RequestBody User user) {
+    public String save(@RequestBody User user) throws MessagingException {
         CustomPasswordGenerator customPasswordGenerator = new CustomPasswordGenerator();
         user.setPassword(customPasswordGenerator.generatePassayPassword());
         UserAge userAge = new UserAge();
