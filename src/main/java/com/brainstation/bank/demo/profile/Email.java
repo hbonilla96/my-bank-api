@@ -1,4 +1,4 @@
-package com.brainstation.bank.demo.configuration;
+package com.brainstation.bank.demo.profile;
 
 import javax.mail.*;
 import java.util.Date;
@@ -15,6 +15,7 @@ public class Email {
         props.put("mail.smtps.auth","true");
         Session session = Session.getInstance(props, null);
         Message msg = new MimeMessage(session);
+
         msg.setFrom(new InternetAddress("vbonillab12@gmail.com"));;
         msg.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(recipient, false));

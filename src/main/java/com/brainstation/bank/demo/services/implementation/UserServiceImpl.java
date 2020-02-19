@@ -1,7 +1,6 @@
 package com.brainstation.bank.demo.services.implementation;
 
 import com.brainstation.bank.demo.DTO.UserDTO;
-import com.brainstation.bank.demo.configuration.Email;
 import com.brainstation.bank.demo.models.User;
 import com.brainstation.bank.demo.repository.UserRepository;
 import com.brainstation.bank.demo.services.UserService;
@@ -17,18 +16,15 @@ public class UserServiceImpl extends UserService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
-    private Email email;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, Email email) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.email = email;
     }
 
     @Override
     public UserDTO save(User user) throws MessagingException {
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        email.sendEmail("vbonillab12@gmail.com", "test","test");
         return userRepository.save(new UserDTO(user));
     }
 

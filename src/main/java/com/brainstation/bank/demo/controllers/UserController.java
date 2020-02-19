@@ -1,8 +1,9 @@
 package com.brainstation.bank.demo.controllers;
 
 import com.brainstation.bank.demo.DTO.UserDTO;
-import com.brainstation.bank.demo.configuration.CustomPasswordGenerator;
-import com.brainstation.bank.demo.configuration.UserAge;
+import com.brainstation.bank.demo.profile.CustomPasswordGenerator;
+import com.brainstation.bank.demo.profile.Email;
+import com.brainstation.bank.demo.profile.UserAge;
 import com.brainstation.bank.demo.models.User;
 import com.brainstation.bank.demo.services.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +16,27 @@ import javax.mail.MessagingException;
 public class UserController {
 
     private UserService userService;
+    private Email email;
+    private UserAge userAge;
+    private CustomPasswordGenerator customPasswordGenerator;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, Email email, UserAge userAge, CustomPasswordGenerator customPasswordGenerator) {
         this.userService = userService;
+        this.email = email;
+        this.userAge = userAge;
+        this.customPasswordGenerator = customPasswordGenerator;
     }
 
     @PostMapping
     public String save(@RequestBody User user) throws MessagingException {
-        CustomPasswordGenerator customPasswordGenerator = new CustomPasswordGenerator();
         user.setPassword(customPasswordGenerator.generatePassayPassword());
-        UserAge userAge = new UserAge();
         user.setAge(userAge.getAge(user.getBirthDate()));
         userService.save(user);
+        email.sendEmail(user.getEmail(), "Welcome to myBank ","Hi " + user.getName() + " " + user.getLastName() + " " + "Your password is: " + customPasswordGenerator.generatePassayPassword());
         return customPasswordGenerator.generatePassayPassword();
     }
-
-    @PutMapping
+    
+    @PutMapping("/update-password")
     public String changePassword(@RequestBody User user){
         return userService.updatePassword(user.getUserId(), user.getPassword());
     }

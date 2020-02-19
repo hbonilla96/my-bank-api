@@ -1,9 +1,8 @@
-package com.brainstation.bank.demo.configuration;
+package com.brainstation.bank.demo.profile;
 
 import org.passay.CharacterData;
 import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
-import org.passay.PasswordGenerator;
 import org.springframework.stereotype.Service;
 
 @Service
