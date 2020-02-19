@@ -1,4 +1,4 @@
-package com.brainstation.bank.demo.profile;
+package com.brainstation.bank.demo.utils;
 
 import javax.mail.*;
 import java.util.Date;

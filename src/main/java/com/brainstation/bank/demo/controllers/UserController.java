@@ -1,9 +1,8 @@
 package com.brainstation.bank.demo.controllers;
 
-import com.brainstation.bank.demo.DTO.UserDTO;
-import com.brainstation.bank.demo.profile.CustomPasswordGenerator;
-import com.brainstation.bank.demo.profile.Email;
-import com.brainstation.bank.demo.profile.UserAge;
+import com.brainstation.bank.demo.utils.CustomPasswordGenerator;
+import com.brainstation.bank.demo.utils.Email;
+import com.brainstation.bank.demo.utils.UserAge;
 import com.brainstation.bank.demo.models.User;
 import com.brainstation.bank.demo.services.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,7 @@ public class UserController {
         email.sendEmail(user.getEmail(), "Welcome to myBank ","Hi " + user.getName() + " " + user.getLastName() + " " + "Your password is: " + customPasswordGenerator.generatePassayPassword());
         return customPasswordGenerator.generatePassayPassword();
     }
-    
+
     @PutMapping("/update-password")
     public String changePassword(@RequestBody User user){
         return userService.updatePassword(user.getUserId(), user.getPassword());

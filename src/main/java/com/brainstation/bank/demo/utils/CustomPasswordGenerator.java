@@ -1,4 +1,4 @@
-package com.brainstation.bank.demo.profile;
+package com.brainstation.bank.demo.utils;
 
 import org.passay.CharacterData;
 import org.passay.CharacterRule;
