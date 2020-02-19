@@ -25,6 +25,10 @@ public class TransactionDTO {
     @Column(name = "transfer_detail")
     private String transferDetail;
 
+    public TransactionDTO(){
+
+    }
+
     public TransactionDTO(Transaction transaction){
         this.id = transaction.getId();
         this.accountCu = transaction.getAccountCu();
