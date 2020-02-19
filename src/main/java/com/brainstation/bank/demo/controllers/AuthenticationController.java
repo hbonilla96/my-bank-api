@@ -34,7 +34,7 @@ public class AuthenticationController {
             String token = jwtTokenProvider.createToken(username, this.userRepository.findUserByUserId(username).orElseThrow(() -> new UsernameNotFoundException("Username" + user.getUserId() + "not found" )));
 
             Map<Object, Object> model = new HashMap<>();
-            model.put("userName", username);
+            model.put("username", username);
             model.put("token", token);
             return ResponseEntity.ok(model);
     }
