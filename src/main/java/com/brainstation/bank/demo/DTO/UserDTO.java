@@ -12,6 +12,8 @@ import java.util.Date;
 @Table(name = "user")
 public class UserDTO implements UserDetails {
 
+    private static final long serialVersionUID = 5926468583005150707L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -39,8 +41,20 @@ public class UserDTO implements UserDetails {
 
     }
 
+    public UserDTO(String userId, String name, String lastName, Date birth_date, int age, String email, String address, String phoneNumber, String password) {
+        this.userId = userId;
+        this.name = name;
+        this.lastName = lastName;
+        this.birth_date = birth_date;
+        this.age = age;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+    }
+
     /*This constructor converts de User to a DTO
-     so the repository doesn't work with the model*/
+         so the repository doesn't work with the model*/
     public UserDTO(User user){
         this.id = user.getId();
         this.userId = user.getUserId();
@@ -61,12 +75,12 @@ public class UserDTO implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return userId;
     }
 
     @Override

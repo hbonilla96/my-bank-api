@@ -28,6 +28,7 @@ public class UserServiceImpl extends UserService {
 
     @Override
     public String updatePassword(String userId, String newPassword) {
+        newPassword = this.passwordEncoder.encode(newPassword);
         userRepository.changePassword(userId,newPassword);
         return "password changed";
     }

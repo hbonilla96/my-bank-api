@@ -1,8 +1,10 @@
 package com.brainstation.bank.demo.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = -6986746375915710855L;
     private int id;
     private String userId;
     private String name;
@@ -64,7 +66,7 @@ public class User {
     }
 
     public String getUserId() {
-        return userId;
+        return this.userId;
     }
 
     public void setId(String userId) {

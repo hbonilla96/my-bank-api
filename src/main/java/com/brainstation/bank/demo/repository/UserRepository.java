@@ -17,5 +17,5 @@ public interface UserRepository extends JpaRepository<UserDTO, Long> {
     @Query("update UserDTO u set u.password = :newPassword where u.userId = :userId")
     void changePassword(@Param("userId") String userId, @Param("newPassword") String newPassword);
 
-    Optional<UserDTO> findUserByUserId(String name);
+    Optional<UserDTO> findUserByUserId(String userId);
 }
