@@ -1,34 +1,34 @@
 package com.brainstation.bank.demo.models;
 
 public class Transaction {
-    private int id;
-    private int accountId;
-    private int userIdCu;
+    private int transactionId;
+    private String accountNumber;
+    private int idUserCu;
     private String accountCu;
     private String nameCu;
-    private int amount;
+    private Long amountTransfer;
     private String transferDetail;
 
-    public Transaction(int id, int accountId, int userIdCu, String accountCu, String nameCu, int amount, String transferDetail) {
-        this.id = id;
-        this.accountId = accountId;
-        this.userIdCu = userIdCu;
+    public Transaction(int transactionId, String accountNumber, int idUserCu, String accountCu, String nameCu, Long amountTransfer, String transferDetail) {
+        this.transactionId = transactionId;
+        this.accountNumber = accountNumber;
+        this.idUserCu = idUserCu;
         this.accountCu = accountCu;
         this.nameCu = nameCu;
-        this.amount = amount;
+        this.amountTransfer = amountTransfer;
         this.transferDetail = transferDetail;
     }
 
-    public int getId() {
-        return id;
+    public int getTransactionId() {
+        return transactionId;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public int getUserIdCu() {
-        return userIdCu;
+    public int getIdUserCu() {
+        return idUserCu;
     }
 
     public String getAccountCu() {
@@ -39,24 +39,24 @@ public class Transaction {
         return nameCu;
     }
 
-    public int getAmount() {
-        return amount;
+    public Long getAmountTransfer() {
+        return amountTransfer;
     }
 
     public String getTransferDetail() {
         return transferDetail;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public void setUserIdCu(int userIdCu) {
-        this.userIdCu = userIdCu;
+    public void setIdUserCu(int idUserCu) {
+        this.idUserCu = idUserCu;
     }
 
     public void setAccountCu(String accountCu) {
@@ -67,8 +67,8 @@ public class Transaction {
         this.nameCu = nameCu;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setAmountTransfer(Long amountTransfer) {
+        this.amountTransfer = amountTransfer;
     }
 
     public void setTransferDetail(String transferDetail) {
