@@ -14,21 +14,21 @@ public class AccountDTO {
     private int id;
     @Column(name = "account_number")
     private String accountNumber;
-    @Column(name = "type")
-    private String type;
-    @Column(name = "currency")
-    private String currency;
+    @Column(name = "account_holder")
+    private String accountHolder;
     @Column(name = "balance")
     private String balance;
+    @Column(name = "type")
+    private String type;
     @Column(name = "user_id")
     private int userId;
 
     public AccountDTO(Account account){
         this.id = account.getId();
         this.accountNumber = account.getAccountNumber();
-        this.type = account.getType();
-        this.currency = account.getCurrency();
+        this.accountHolder = account.getAccountHolder();
         this.balance = account.getBalance();
+        this.type = account.getType();
         this.userId = account.getUserId();
     }
 }

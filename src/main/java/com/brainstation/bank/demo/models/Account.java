@@ -3,17 +3,19 @@ package com.brainstation.bank.demo.models;
 public class Account {
     private int id;
     private String accountNumber;
+    private String accountHolder;
+    private String balance;
     private String type;
     private String currency;
-    private String balance;
     private int userId;
 
-    public Account(int id, String accountNumber, String type, String currency, String balance, int userId) {
+    public Account(int id, String accountNumber, String accountHolder, String balance, String type, String currency, int userId) {
         this.id = id;
         this.accountNumber = accountNumber;
+        this.accountHolder = accountHolder;
+        this.balance = balance;
         this.type = type;
         this.currency = currency;
-        this.balance = balance;
         this.userId = userId;
     }
 
@@ -25,20 +27,24 @@ public class Account {
         return accountNumber;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
     public String getBalance() {
         return balance;
     }
 
     public int getUserId() {
         return userId;
+    }
+
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 
     public void setId(int id) {
@@ -49,19 +55,23 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
     public void setBalance(String balance) {
         this.balance = balance;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setAccountHolder(String accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }
