@@ -20,4 +20,8 @@ public interface AccountRepository extends JpaRepository<AccountDTO, Long> {
     @Modifying
     @Query("update AccountDTO a set a.balance = a.balance - :transferAmount where a.id = :originAccount")
     void updateBalanceOrigin(@Param("transferAmount") int transferAmount,@Param("originAccount") int originAccount);
+
+    @Query("select currency from AccountDTO a where a.id = :destinationAccount")
+    String find(@Param("destinationAccount") int destinationAccount);
+
 }

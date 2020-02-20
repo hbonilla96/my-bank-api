@@ -25,13 +25,17 @@ public class TransactionServiceImpl extends TransactionService {
         String msj = "";
         int balanceOrigin = accountRepository.findAllByAccountNumber(transaction.getOriginAccount());
 
-        if(balanceOrigin >= transaction.getTransferAmount() ){
-            transactionRepository.save(new TransactionDTO(transaction));
-            accountRepository.updateBalanceDestination(transaction.getTransferAmount(),transaction.getDestinationAccount());
-            accountRepository.updateBalanceOrigin(transaction.getTransferAmount(),transaction.getOriginAccount());
-            msj = "yey";
+        if(accountRepository.find(transaction.getDestinationAccount()).equals(transaction.getCurrency())){
+            if(balanceOrigin >= transaction.getTransferAmount() ){
+                transactionRepository.save(new TransactionDTO(transaction));
+                accountRepository.updateBalanceDestination(transaction.getTransferAmount(),transaction.getDestinationAccount());
+                accountRepository.updateBalanceOrigin(transaction.getTransferAmount(),transaction.getOriginAccount());
+                msj = "yey";
+            }else{
+                msj = "The account does not have the funds to complete the transaction";
+            }
         }else{
-            msj = "The account does not have the funds to complete the transaction";
+            msj = "The currency on the destination and origin account should be the same";
         }
         return msj;
     }
