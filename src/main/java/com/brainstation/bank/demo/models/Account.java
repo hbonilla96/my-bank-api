@@ -4,12 +4,12 @@ public class Account {
     private int id;
     private String accountNumber;
     private String accountHolder;
-    private String balance;
+    private int balance;
     private String type;
     private String currency;
     private int userId;
 
-    public Account(int id, String accountNumber, String accountHolder, String balance, String type, String currency, int userId) {
+    public Account(int id, String accountNumber, String accountHolder, int balance, String type, String currency, int userId) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;
@@ -27,7 +27,7 @@ public class Account {
         return accountNumber;
     }
 
-    public String getBalance() {
+    public int getBalance() {
         return balance;
     }
 
@@ -55,7 +55,7 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 

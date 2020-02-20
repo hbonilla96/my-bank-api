@@ -17,7 +17,7 @@ public class AccountDTO {
     @Column(name = "account_holder")
     private String accountHolder;
     @Column(name = "balance")
-    private String balance;
+    private int balance;
     @Column(name = "type")
     private String type;
     @Column(name = "user_id")

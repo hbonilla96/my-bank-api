@@ -10,16 +10,14 @@ public class TransactionDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
     private int transactionId;
-    @Column(name="account_number")
-    private String accountNumber;
-    @Column(name = "id_user_cu")
-    private int userIdCu;
-    @Column(name = "account_cu")
-    private String accountCu;
-    @Column(name = "name_cu")
-    private String nameCu;
-    @Column(name = "amount_transfer")
-    private Long amountTransfer;
+    @Column(name = "origin_account")
+    private int originAccount;
+    @Column(name = "destination_account")
+    private int destinationAccount;
+    @Column(name = "currency")
+    private String currency;
+    @Column(name = "transfer_amount")
+    private int transferAmount;
     @Column(name = "transfer_detail")
     private String transferDetail;
 
@@ -29,11 +27,10 @@ public class TransactionDTO {
 
     public TransactionDTO(Transaction transaction){
         this.transactionId = transaction.getTransactionId();
-        this.accountNumber = transaction.getAccountNumber();
-        this.userIdCu = transaction.getIdUserCu();
-        this.accountCu = transaction.getAccountCu();
-        this.nameCu = transaction.getNameCu();
-        this.amountTransfer = transaction.getAmountTransfer();
+        this.originAccount = transaction.getOriginAccount();
+        this.destinationAccount = transaction.getDestinationAccount();
+        this.currency = transaction.getCurrency();
+        this.transferAmount = transaction.getTransferAmount();
         this.transferDetail = transaction.getTransferDetail();
     }
 }

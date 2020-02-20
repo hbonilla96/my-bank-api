@@ -5,8 +5,10 @@ import com.brainstation.bank.demo.models.FavoriteAccount;
 import com.brainstation.bank.demo.repository.FavoriteAccountRepository;
 import com.brainstation.bank.demo.services.FavoriteAccountService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class FavoriteAccountServiceImpl extends FavoriteAccountService {
 
     private FavoriteAccountRepository favoriteAccountRepository;

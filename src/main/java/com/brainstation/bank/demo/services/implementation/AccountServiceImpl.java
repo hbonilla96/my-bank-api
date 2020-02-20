@@ -5,8 +5,10 @@ import com.brainstation.bank.demo.models.Account;
 import com.brainstation.bank.demo.repository.AccountRepository;
 import com.brainstation.bank.demo.services.AccountService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class AccountServiceImpl extends AccountService {
 
     private AccountRepository accountRepository;
