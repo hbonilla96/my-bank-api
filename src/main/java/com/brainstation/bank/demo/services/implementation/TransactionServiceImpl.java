@@ -2,8 +2,10 @@ package com.brainstation.bank.demo.services.implementation;
 
 import com.brainstation.bank.demo.DTO.TransactionDTO;
 import com.brainstation.bank.demo.models.Transaction;
+import com.brainstation.bank.demo.models.TransactionHistory;
 import com.brainstation.bank.demo.repository.AccountRepository;
 import com.brainstation.bank.demo.repository.TransactionRepository;
+import com.brainstation.bank.demo.services.TransactionHistoryService;
 import com.brainstation.bank.demo.services.TransactionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,7 @@ public class TransactionServiceImpl extends TransactionService {
 
     private TransactionRepository transactionRepository;
     private AccountRepository accountRepository;
+    private TransactionHistoryService transactionHistoryService;
 
     public TransactionServiceImpl(TransactionRepository transactionRepository, AccountRepository accountRepository) {
         this.transactionRepository = transactionRepository;
@@ -30,7 +33,8 @@ public class TransactionServiceImpl extends TransactionService {
                 transactionRepository.save(new TransactionDTO(transaction));
                 accountRepository.updateBalanceDestination(transaction.getTransferAmount(),transaction.getDestinationAccount());
                 accountRepository.updateBalanceOrigin(transaction.getTransferAmount(),transaction.getOriginAccount());
-                msj = "yey";
+                
+                msj = "Successful transfer.";
             }else{
                 msj = "The account does not have the funds to complete the transaction";
             }
