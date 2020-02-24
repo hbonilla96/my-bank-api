@@ -3,6 +3,7 @@ package com.brainstation.bank.demo.controllers;
 import com.brainstation.bank.demo.authConfig.JwtTokenProvider;
 import com.brainstation.bank.demo.models.User;
 import com.brainstation.bank.demo.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +30,7 @@ public class AuthenticationController {
 
     @PostMapping
     public ResponseEntity signin(@RequestBody User user){
+        try {
             String username = user.getUserId();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, user.getPassword()));
             String token = jwtTokenProvider.createToken(username, this.userRepository.findUserByUserId(username).orElseThrow(() -> new UsernameNotFoundException("Username" + user.getUserId() + "not found" )));
@@ -37,5 +39,12 @@ public class AuthenticationController {
             model.put("username", username);
             model.put("token", token);
             return ResponseEntity.ok(model);
+        }
+        catch(Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body("User not found");
+        }
+
     }
 }
