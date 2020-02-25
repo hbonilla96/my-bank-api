@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface AccountRepository extends JpaRepository<AccountDTO, Long> {
 
@@ -24,4 +26,5 @@ public interface AccountRepository extends JpaRepository<AccountDTO, Long> {
     @Query("select currency from AccountDTO a where a.id = :destinationAccount")
     String find(@Param("destinationAccount") int destinationAccount);
 
+    List<AccountDTO> getAccountDTOByUserId(@Param("userId") int userId);
 }

@@ -25,6 +25,19 @@ public class AccountDTO {
     @Column(name = "user_id")
     private int userId;
 
+    public AccountDTO(){
+
+    }
+
+    public AccountDTO(String accountNumber, String accountHolder, int balance, String type, String currency, int userId) {
+        this.accountNumber = accountNumber;
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+        this.type = type;
+        this.currency = currency;
+        this.userId = userId;
+    }
+
     public AccountDTO(Account account){
         this.id = account.getId();
         this.accountNumber = account.getAccountNumber();
@@ -33,5 +46,61 @@ public class AccountDTO {
         this.type = account.getType();
         this.currency = account.getCurrency();
         this.userId = account.getUserId();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setAccountHolder(String accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

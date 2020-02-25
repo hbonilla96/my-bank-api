@@ -7,6 +7,8 @@ import com.brainstation.bank.demo.services.AccountService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class AccountServiceImpl extends AccountService {
@@ -42,5 +44,10 @@ public class AccountServiceImpl extends AccountService {
             }
         }
         return "account created" + " number: " + (IBAN + num);
+    }
+
+    @Override
+    public List<AccountDTO> getAccountByUser(int userId) {
+        return accountRepository.getAccountDTOByUserId(userId);
     }
 }
