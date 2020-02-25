@@ -10,6 +10,6 @@ import java.util.List;
 
 @Service
 public abstract class UserService {
-    public abstract UserDTO save(User user) throws MessagingException;
+    public abstract String save(User user) throws MessagingException;
     public abstract String updatePassword(String userId, String newPassword);
 }

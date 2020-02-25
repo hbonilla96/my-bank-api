@@ -17,7 +17,7 @@ public class UserDTO implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private int id;
     @Column(name="user_id")
     private String userId;
     @Column(name = "name")
@@ -36,12 +36,14 @@ public class UserDTO implements UserDetails {
     private String phoneNumber;
     @Column(name="password")
     private String password;
+    @Column(name = "gender")
+    private String gender;
 
     public UserDTO(){
 
     }
 
-    public UserDTO(String userId, String name, String lastName, Date birth_date, int age, String email, String address, String phoneNumber, String password) {
+    public UserDTO(String userId, String name, String lastName, Date birth_date, int age, String email, String address, String phoneNumber, String password, String gender) {
         this.userId = userId;
         this.name = name;
         this.lastName = lastName;
@@ -51,6 +53,7 @@ public class UserDTO implements UserDetails {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.gender = gender;
     }
 
     /*This constructor converts de User to a DTO
@@ -66,6 +69,19 @@ public class UserDTO implements UserDetails {
         this.address = user.getAddress();
         this.phoneNumber = user.getPhoneNumber();
         this.password = user.getPassword();
+        this.gender = user.getGender();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     @Override

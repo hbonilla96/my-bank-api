@@ -9,6 +9,8 @@ public class Account {
     private String currency;
     private int userId;
 
+    public Account(){}
+
     public Account(int id, String accountNumber, String accountHolder, int balance, String type, String currency, int userId) {
         this.id = id;
         this.accountNumber = accountNumber;

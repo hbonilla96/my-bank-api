@@ -18,4 +18,5 @@ public interface UserRepository extends JpaRepository<UserDTO, Long> {
     void changePassword(@Param("userId") String userId, @Param("newPassword") String newPassword);
 
     Optional<UserDTO> findUserByUserId(String userId);
+
 }
