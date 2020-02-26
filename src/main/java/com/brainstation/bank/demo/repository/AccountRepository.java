@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import com.brainstation.bank.demo.DTO.UserDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AccountRepository extends JpaRepository<AccountDTO, Long> {
@@ -27,4 +29,6 @@ public interface AccountRepository extends JpaRepository<AccountDTO, Long> {
     String find(@Param("destinationAccount") int destinationAccount);
 
     List<AccountDTO> getAccountDTOByUserId(@Param("userId") int userId);
+    
+    List<AccountDTO> getAccountDTOByAccountNumberAndUserName(@Param("accountNumber") String accountNumber, @Param("userName") String userName);
 }

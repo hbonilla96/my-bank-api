@@ -24,18 +24,21 @@ public class AccountDTO {
     private String currency;
     @Column(name = "user_id")
     private int userId;
+    @Column(name = "user_name")
+    private String userName;
 
     public AccountDTO(){
 
     }
 
-    public AccountDTO(String accountNumber, String accountHolder, int balance, String type, String currency, int userId) {
+    public AccountDTO(String accountNumber, String accountHolder, int balance, String type, String currency, int userId, String userName) {
         this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;
         this.balance = balance;
         this.type = type;
         this.currency = currency;
         this.userId = userId;
+        this.userName = userName;
     }
 
     public AccountDTO(Account account){
@@ -46,6 +49,7 @@ public class AccountDTO {
         this.type = account.getType();
         this.currency = account.getCurrency();
         this.userId = account.getUserId();
+        this.userName = account.getUserName();
     }
 
     public int getId() {
@@ -76,6 +80,10 @@ public class AccountDTO {
         return userId;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -102,5 +110,9 @@ public class AccountDTO {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

@@ -50,4 +50,11 @@ public class AccountServiceImpl extends AccountService {
     public List<AccountDTO> getAccountByUser(int userId) {
         return accountRepository.getAccountDTOByUserId(userId);
     }
+
+    @Override
+    public List<AccountDTO> getAccountByUserName(String accountNumber, String userName) {
+        return accountRepository.getAccountDTOByAccountNumberAndUserName(accountNumber,userName);
+    }
+
+
 }

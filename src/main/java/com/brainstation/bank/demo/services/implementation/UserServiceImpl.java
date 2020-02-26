@@ -35,6 +35,7 @@ public class UserServiceImpl extends UserService {
         account.setBalance(0);
         account.setUserId(userDTO.getId());
         account.setAccountHolder(userDTO.getName() + " " + userDTO.getLastName());
+        account.setUserName(user.getUserId());
         accountService.generateAccountNumber(account);
         return "user saved";
     }

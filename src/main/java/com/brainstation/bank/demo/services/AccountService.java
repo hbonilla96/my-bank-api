@@ -10,4 +10,5 @@ import java.util.List;
 public abstract class AccountService {
     public abstract String generateAccountNumber(Account account);
     public abstract List<AccountDTO> getAccountByUser(int userId);
+    public abstract  List<AccountDTO> getAccountByUserName(String accountNumber, String userName);
 }

@@ -7,17 +7,19 @@ public class Account {
     private int balance;
     private String type;
     private String currency;
+    private String userName;
     private int userId;
 
     public Account(){}
 
-    public Account(int id, String accountNumber, String accountHolder, int balance, String type, String currency, int userId) {
+    public Account(int id, String accountNumber, String accountHolder, int balance, String type, String currency, String userName, int userId) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;
         this.balance = balance;
         this.type = type;
         this.currency = currency;
+        this.userName = userName;
         this.userId = userId;
     }
 
@@ -49,6 +51,10 @@ public class Account {
         return currency;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -75,5 +81,9 @@ public class Account {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

@@ -27,4 +27,9 @@ public class AccountController {
     public List listAccountByUser(@PathVariable("id") int id){
         return accountService.getAccountByUser(id);
     }
+
+    @GetMapping("/{accountNumber}/{userName}")
+    public List listAccountByUserName(@PathVariable("accountNumber") String accountNumber, @PathVariable("userName") String userName){
+        return accountService.getAccountByUserName(accountNumber,userName);
+    }
 }
