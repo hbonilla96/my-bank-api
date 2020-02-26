@@ -2,7 +2,6 @@ package com.brainstation.bank.demo.controllers;
 
 import com.brainstation.bank.demo.models.Account;
 import com.brainstation.bank.demo.services.AccountService;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
