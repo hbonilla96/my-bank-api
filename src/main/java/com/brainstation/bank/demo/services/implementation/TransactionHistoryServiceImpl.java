@@ -6,6 +6,8 @@ import com.brainstation.bank.demo.repository.TransactionHistoryRepository;
 import com.brainstation.bank.demo.services.TransactionHistoryService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TransactionHistoryServiceImpl extends TransactionHistoryService {
 
@@ -18,5 +20,10 @@ public class TransactionHistoryServiceImpl extends TransactionHistoryService {
     @Override
     public void saveHistory(TransactionHistory transactionHistory) {
         transactionHistoryRepository.save(new TransactionHistoryDTO(transactionHistory));
+    }
+
+    @Override
+    public List<TransactionHistoryDTO> getHistoryByUser(String userId) {
+        return transactionHistoryRepository.getTransactionHistoryDTOByUserId(userId);
     }
 }
