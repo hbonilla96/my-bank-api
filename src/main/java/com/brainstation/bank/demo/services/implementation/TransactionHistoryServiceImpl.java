@@ -26,4 +26,35 @@ public class TransactionHistoryServiceImpl extends TransactionHistoryService {
     public List<TransactionHistoryDTO> getHistoryByUser(String userId) {
         return transactionHistoryRepository.getTransactionHistoryDTOByUserId(userId);
     }
+
+    @Override
+    public int getJanuaryExpenses(String userId) {
+        return transactionHistoryRepository.getExpensesForMonthJanuary(userId);
+    }
+
+    @Override
+    public int getFebruaryExpenses(String userId) {
+        return transactionHistoryRepository.getExpensesForMonthFebruary(userId);
+    }
+
+    @Override
+    public int getMarchExpenses(String userId) {
+        return transactionHistoryRepository.getExpensesForMonthMarch(userId);
+    }
+
+    @Override
+    public int getAprilExpenses(String userId) {
+        return transactionHistoryRepository.getExpensesForMonthApril(userId);
+    }
+
+    @Override
+    public int getMayExpenses(String userId) {
+        return transactionHistoryRepository.getExpensesForMonthMay(userId);
+    }
+
+    @Override
+    public int getJuneExpenses(String userId) {
+        return transactionHistoryRepository.getExpensesForMonthJune(userId);
+    }
+
 }

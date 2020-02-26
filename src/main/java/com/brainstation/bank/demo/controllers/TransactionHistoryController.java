@@ -27,4 +27,34 @@ public class TransactionHistoryController {
     public List<TransactionHistoryDTO> getAllTransactionByUser(@PathVariable("userId") String userId){
         return transactionHistoryService.getHistoryByUser(userId);
     }
+
+    @GetMapping("/january/{userId}")
+    public int getJanuaryExpenses(@PathVariable("userId") String userId){
+        return transactionHistoryService.getJanuaryExpenses(userId);
+    }
+
+    @GetMapping("/february/{userId}")
+    public int getFebruaryExpenses(@PathVariable("userId") String userId){
+        return transactionHistoryService.getFebruaryExpenses(userId);
+    }
+
+    @GetMapping("/march/{userId}")
+    public int getMarchExpenses(@PathVariable("userId") String userId){
+        return transactionHistoryService.getMarchExpenses(userId);
+    }
+
+    @GetMapping("/april/{userId}")
+    public int getAprilExpenses(@PathVariable("userId") String userId){
+        return transactionHistoryService.getAprilExpenses(userId);
+    }
+
+    @GetMapping("/may/{userId}")
+    public int getMayExpenses(@PathVariable("userId") String userId){
+        return transactionHistoryService.getMayExpenses(userId);
+    }
+
+    @GetMapping("/june/{userId}")
+    public int getJuneExpenses(@PathVariable("userId") String userId){
+        return transactionHistoryService.getJuneExpenses(userId);
+    }
 }
