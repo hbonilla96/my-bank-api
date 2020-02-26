@@ -11,15 +11,17 @@ public class TransactionDTO {
     @Column(name = "transaction_id")
     private int transactionId;
     @Column(name = "origin_account")
-    private int originAccount;
+    private String originAccount;
     @Column(name = "destination_account")
-    private int destinationAccount;
+    private String destinationAccount;
     @Column(name = "currency")
     private String currency;
     @Column(name = "transfer_amount")
     private int transferAmount;
     @Column(name = "transfer_detail")
     private String transferDetail;
+    @Column(name = "user_id")
+    private String userId;
 
     public TransactionDTO(){
 

@@ -14,19 +14,19 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<AccountDTO, Long> {
 
-    @Query("select balance from AccountDTO a where a.id = :accountNumber")
-    int findAllByAccountNumber(@Param("accountNumber") int accountNumber);
+    @Query("select balance from AccountDTO a where a.accountNumber = :accountNumber")
+    int findAllByAccountNumber(@Param("accountNumber") String accountNumber);
 
     @Modifying
-    @Query("update AccountDTO a set a.balance = a.balance + :transferAmount where a.id = :destinationAccount")
-    void updateBalanceDestination(@Param("transferAmount") int transferAmount,@Param("destinationAccount") int destinationAccount);
+    @Query("update AccountDTO a set a.balance = a.balance + :transferAmount where a.accountNumber = :destinationAccount")
+    void updateBalanceDestination(@Param("transferAmount") int transferAmount,@Param("destinationAccount") String destinationAccount);
 
     @Modifying
-    @Query("update AccountDTO a set a.balance = a.balance - :transferAmount where a.id = :originAccount")
-    void updateBalanceOrigin(@Param("transferAmount") int transferAmount,@Param("originAccount") int originAccount);
+    @Query("update AccountDTO a set a.balance = a.balance - :transferAmount where a.accountNumber = :originAccount")
+    void updateBalanceOrigin(@Param("transferAmount") int transferAmount,@Param("originAccount") String originAccount);
 
-    @Query("select currency from AccountDTO a where a.id = :destinationAccount")
-    String find(@Param("destinationAccount") int destinationAccount);
+    @Query("select currency from AccountDTO a where a.accountNumber = :destinationAccount")
+    String find(@Param("destinationAccount") String destinationAccount);
 
     List<AccountDTO> getAccountDTOByUserId(@Param("userId") int userId);
     

@@ -2,13 +2,14 @@ package com.brainstation.bank.demo.models;
 
 public class Transaction {
     private int transactionId;
-    private int originAccount;
-    private int destinationAccount;
+    private String originAccount;
+    private String destinationAccount;
     private String currency;
     private int transferAmount;
     private String transferDetail;
+    private String userId;
 
-    public Transaction(int transactionId, int originAccount, int destinationAccount, String currency, int transferAmount, String transferDetail) {
+    public Transaction(int transactionId, String originAccount, String destinationAccount, String currency, int transferAmount, String transferDetail) {
         this.transactionId = transactionId;
         this.originAccount = originAccount;
         this.destinationAccount = destinationAccount;
@@ -21,7 +22,7 @@ public class Transaction {
         return transactionId;
     }
 
-    public int getOriginAccount() {
+    public String getOriginAccount() {
         return originAccount;
     }
 
@@ -37,7 +38,7 @@ public class Transaction {
         return transferDetail;
     }
 
-    public int getDestinationAccount() {
+    public String getDestinationAccount() {
         return destinationAccount;
     }
 
@@ -45,7 +46,7 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public void setOriginAccount(int originAccount) {
+    public void setOriginAccount(String originAccount) {
         this.originAccount = originAccount;
     }
 
@@ -61,7 +62,7 @@ public class Transaction {
         this.transferDetail = transferDetail;
     }
 
-    public void setDestinationAccount(int destinationAccount) {
+    public void setDestinationAccount(String destinationAccount) {
         this.destinationAccount = destinationAccount;
     }
 }
