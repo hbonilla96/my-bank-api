@@ -1,8 +1,11 @@
 package com.brainstation.bank.demo.controllers;
 
 import com.brainstation.bank.demo.models.Transaction;
+import com.brainstation.bank.demo.models.TransactionHistory;
 import com.brainstation.bank.demo.services.TransactionService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @CrossOrigin
 @RestController
@@ -16,6 +19,12 @@ public class TransactionController {
 
     @PostMapping
     public String doTransaction(@RequestBody Transaction transaction){
-        return transactionService.doTransaction(transaction);
+        TransactionHistory transactionHistory = new TransactionHistory();
+        Date transactionDate = new Date();
+        transactionHistory.setAccountNumber(transaction.getOriginAccount());
+        transactionHistory.setTransferAmount(transaction.getTransferAmount());
+        transactionHistory.setUserId(transaction.getUserId());
+        transactionHistory.setTransactionDate(transactionDate);
+        return transactionService.doTransaction(transaction,transactionHistory);
     }
 }

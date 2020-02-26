@@ -1,11 +1,12 @@
 package com.brainstation.bank.demo.services.implementation;
 
 import com.brainstation.bank.demo.DTO.TransactionDTO;
+import com.brainstation.bank.demo.DTO.TransactionHistoryDTO;
 import com.brainstation.bank.demo.models.Transaction;
 import com.brainstation.bank.demo.models.TransactionHistory;
 import com.brainstation.bank.demo.repository.AccountRepository;
+import com.brainstation.bank.demo.repository.TransactionHistoryRepository;
 import com.brainstation.bank.demo.repository.TransactionRepository;
-import com.brainstation.bank.demo.services.TransactionHistoryService;
 import com.brainstation.bank.demo.services.TransactionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +17,16 @@ public class TransactionServiceImpl extends TransactionService {
 
     private TransactionRepository transactionRepository;
     private AccountRepository accountRepository;
-    private TransactionHistoryService transactionHistoryService;
+    private TransactionHistoryRepository transactionHistoryRepository;
 
-    public TransactionServiceImpl(TransactionRepository transactionRepository, AccountRepository accountRepository) {
+    public TransactionServiceImpl(TransactionRepository transactionRepository, AccountRepository accountRepository, TransactionHistoryRepository transactionHistoryRepository) {
         this.transactionRepository = transactionRepository;
         this.accountRepository = accountRepository;
+        this.transactionHistoryRepository = transactionHistoryRepository;
     }
 
     @Override
-    public String doTransaction(Transaction transaction) {
+    public String doTransaction(Transaction transaction, TransactionHistory transactionHistory) {
         String msj = "";
         int balanceOrigin = accountRepository.findAllByAccountNumber(transaction.getOriginAccount());
 
@@ -33,7 +35,9 @@ public class TransactionServiceImpl extends TransactionService {
                 transactionRepository.save(new TransactionDTO(transaction));
                 accountRepository.updateBalanceDestination(transaction.getTransferAmount(),transaction.getDestinationAccount());
                 accountRepository.updateBalanceOrigin(transaction.getTransferAmount(),transaction.getOriginAccount());
-                
+
+                //save on history
+                transactionHistoryRepository.save(new TransactionHistoryDTO(transactionHistory));
                 msj = "Successful transfer.";
             }else{
                 msj = "The account does not have the funds to complete the transaction";

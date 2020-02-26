@@ -9,13 +9,14 @@ public class Transaction {
     private String transferDetail;
     private String userId;
 
-    public Transaction(int transactionId, String originAccount, String destinationAccount, String currency, int transferAmount, String transferDetail) {
+    public Transaction(int transactionId, String originAccount, String destinationAccount, String currency, int transferAmount, String transferDetail, String userId) {
         this.transactionId = transactionId;
         this.originAccount = originAccount;
         this.destinationAccount = destinationAccount;
         this.currency = currency;
         this.transferAmount = transferAmount;
         this.transferDetail = transferDetail;
+        this.userId = userId;
     }
 
     public int getTransactionId() {
@@ -40,6 +41,10 @@ public class Transaction {
 
     public String getDestinationAccount() {
         return destinationAccount;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public void setTransactionId(int transactionId) {

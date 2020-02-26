@@ -13,14 +13,20 @@ public class TransactionHistoryDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "transaction_id")
-    private int transactionId;
+    @Column(name = "account_number")
+    private String accountNumber;
+    @Column(name = "user_id")
+    private String userId;
+    @Column(name = "transfer_amount")
+    private int transferAmount;
     @Column(name = "transaction_date")
     private Date transactionDate;
 
     public TransactionHistoryDTO(TransactionHistory transactionHistory){
         this.id = transactionHistory.getId();
-        this.transactionId = transactionHistory.getTransactionId();
+        this.accountNumber = transactionHistory.getAccountNumber();
+        this.userId = transactionHistory.getUserId();
+        this.transferAmount = transactionHistory.getTransferAmount();
         this.transactionDate = transactionHistory.getTransactionDate();
     }
 }
