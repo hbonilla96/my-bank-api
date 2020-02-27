@@ -10,6 +10,7 @@ import java.util.List;
 public abstract class TransactionHistoryService {
     public abstract void saveHistory(TransactionHistory transactionHistory);
     public abstract List<TransactionHistoryDTO> getHistoryByUser(String userId);
+    public abstract List<TransactionHistoryDTO> getHistoryByAccountAndUser(String accountNumber, String userId);
     public abstract String getJanuaryExpenses(String userId);
     public abstract String getFebruaryExpenses(String userId);
     public abstract String getMarchExpenses(String userId);

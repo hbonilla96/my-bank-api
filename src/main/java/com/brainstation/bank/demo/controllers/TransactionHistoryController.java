@@ -29,6 +29,12 @@ public class TransactionHistoryController {
         return transactionHistoryService.getHistoryByUser(userId);
     }
 
+    @GetMapping("/{accountNumber}/{userId}")
+    public List<TransactionHistoryDTO> getAllTransactionsByAccountAndId(@PathVariable("accountNumber") String accountNumber,
+                                                                        @PathVariable("userId") String userId){
+        return transactionHistoryService.getHistoryByAccountAndUser(accountNumber, userId);
+    }
+
     @GetMapping("/expenses/{userId}")
     public MonthsExpenses getExpenses(@PathVariable("userId") String userId){
         MonthsExpenses monthsExpenses = new MonthsExpenses();

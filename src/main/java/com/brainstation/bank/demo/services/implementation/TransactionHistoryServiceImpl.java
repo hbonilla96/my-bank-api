@@ -28,6 +28,11 @@ public class TransactionHistoryServiceImpl extends TransactionHistoryService {
     }
 
     @Override
+    public List<TransactionHistoryDTO> getHistoryByAccountAndUser(String accountNumber, String userId) {
+        return transactionHistoryRepository.getTransactionHistoryDTOByAccountNumberAndUserId(accountNumber,userId);
+    }
+
+    @Override
     public String getJanuaryExpenses(String userId) {
         return transactionHistoryRepository.getExpensesForMonthJanuary(userId);
     }
