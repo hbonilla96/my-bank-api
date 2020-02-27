@@ -1,6 +1,7 @@
 package com.brainstation.bank.demo.controllers;
 
 import com.brainstation.bank.demo.DTO.TransactionHistoryDTO;
+import com.brainstation.bank.demo.models.MonthsExpenses;
 import com.brainstation.bank.demo.models.TransactionHistory;
 import com.brainstation.bank.demo.services.TransactionHistoryService;
 import org.springframework.web.bind.annotation.*;
@@ -28,33 +29,16 @@ public class TransactionHistoryController {
         return transactionHistoryService.getHistoryByUser(userId);
     }
 
-    @GetMapping("/january/{userId}")
-    public int getJanuaryExpenses(@PathVariable("userId") String userId){
-        return transactionHistoryService.getJanuaryExpenses(userId);
+    @GetMapping("/expenses/{userId}")
+    public MonthsExpenses getExpenses(@PathVariable("userId") String userId){
+        MonthsExpenses monthsExpenses = new MonthsExpenses();
+        monthsExpenses.setJanuary(transactionHistoryService.getJanuaryExpenses(userId));
+        monthsExpenses.setFebruary(transactionHistoryService.getFebruaryExpenses(userId));
+        monthsExpenses.setMarch(transactionHistoryService.getMarchExpenses(userId));
+        monthsExpenses.setApril(transactionHistoryService.getAprilExpenses(userId));
+        monthsExpenses.setMay(transactionHistoryService.getMayExpenses(userId));
+        monthsExpenses.setJune(transactionHistoryService.getJuneExpenses(userId));
+        return monthsExpenses;
     }
 
-    @GetMapping("/february/{userId}")
-    public int getFebruaryExpenses(@PathVariable("userId") String userId){
-        return transactionHistoryService.getFebruaryExpenses(userId);
-    }
-
-    @GetMapping("/march/{userId}")
-    public int getMarchExpenses(@PathVariable("userId") String userId){
-        return transactionHistoryService.getMarchExpenses(userId);
-    }
-
-    @GetMapping("/april/{userId}")
-    public int getAprilExpenses(@PathVariable("userId") String userId){
-        return transactionHistoryService.getAprilExpenses(userId);
-    }
-
-    @GetMapping("/may/{userId}")
-    public int getMayExpenses(@PathVariable("userId") String userId){
-        return transactionHistoryService.getMayExpenses(userId);
-    }
-
-    @GetMapping("/june/{userId}")
-    public int getJuneExpenses(@PathVariable("userId") String userId){
-        return transactionHistoryService.getJuneExpenses(userId);
-    }
 }

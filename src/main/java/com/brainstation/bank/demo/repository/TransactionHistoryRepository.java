@@ -14,20 +14,20 @@ public interface TransactionHistoryRepository extends JpaRepository<TransactionH
     List<TransactionHistoryDTO> getTransactionHistoryDTOByUserId(@Param("userId") String userId);
 
     @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-01-01' and '2020-02-31' ")
-    int getExpensesForMonthJanuary(@Param("userId") String userId);
+    String getExpensesForMonthJanuary(@Param("userId") String userId);
 
     @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-02-01' and '2020-02-29'")
-    int getExpensesForMonthFebruary(@Param("userId") String userId);
+    String getExpensesForMonthFebruary(@Param("userId") String userId);
 
     @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-03-01' and '2020-03-31'")
-    int getExpensesForMonthMarch(@Param("userId") String userId);
+    String getExpensesForMonthMarch(@Param("userId") String userId);
 
-    @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-04-01' and '2020-04-31'")
-    int getExpensesForMonthApril(@Param("userId") String userId);
+    @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-04-01' and '2020-04-30'")
+    String getExpensesForMonthApril(@Param("userId") String userId);
 
     @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-05-01' and '2020-05-31'")
-    int getExpensesForMonthMay(@Param("userId") String userId);
+    String getExpensesForMonthMay(@Param("userId") String userId);
 
     @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-06-01' and '2020-06-31'")
-    int getExpensesForMonthJune(@Param("userId") String userId);
+    String getExpensesForMonthJune(@Param("userId") String userId);
 }

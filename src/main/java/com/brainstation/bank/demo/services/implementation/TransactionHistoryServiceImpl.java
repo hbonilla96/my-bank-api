@@ -28,32 +28,32 @@ public class TransactionHistoryServiceImpl extends TransactionHistoryService {
     }
 
     @Override
-    public int getJanuaryExpenses(String userId) {
+    public String getJanuaryExpenses(String userId) {
         return transactionHistoryRepository.getExpensesForMonthJanuary(userId);
     }
 
     @Override
-    public int getFebruaryExpenses(String userId) {
+    public String getFebruaryExpenses(String userId) {
         return transactionHistoryRepository.getExpensesForMonthFebruary(userId);
     }
 
     @Override
-    public int getMarchExpenses(String userId) {
+    public String getMarchExpenses(String userId) {
         return transactionHistoryRepository.getExpensesForMonthMarch(userId);
     }
 
     @Override
-    public int getAprilExpenses(String userId) {
+    public String getAprilExpenses(String userId) {
         return transactionHistoryRepository.getExpensesForMonthApril(userId);
     }
 
     @Override
-    public int getMayExpenses(String userId) {
+    public String getMayExpenses(String userId) {
         return transactionHistoryRepository.getExpensesForMonthMay(userId);
     }
 
     @Override
-    public int getJuneExpenses(String userId) {
+    public String getJuneExpenses(String userId) {
         return transactionHistoryRepository.getExpensesForMonthJune(userId);
     }
 
