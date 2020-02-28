@@ -26,7 +26,7 @@ public class TransactionServiceImpl extends TransactionService {
     }
 
     @Override
-    public String doTransaction(Transaction transaction, TransactionHistory transactionHistory) {
+    public String doTransaction(Transaction transaction, TransactionHistory transactionHistoryOrigin, TransactionHistory transactionHistoryDestination) {
         String msj = "";
         int balanceOrigin = accountRepository.findAllByAccountNumber(transaction.getOriginAccount());
 
@@ -36,8 +36,10 @@ public class TransactionServiceImpl extends TransactionService {
                 accountRepository.updateBalanceDestination(transaction.getTransferAmount(),transaction.getDestinationAccount());
                 accountRepository.updateBalanceOrigin(transaction.getTransferAmount(),transaction.getOriginAccount());
 
-                //save on history
-                transactionHistoryRepository.save(new TransactionHistoryDTO(transactionHistory));
+                //save on history on origin account
+                transactionHistoryRepository.save(new TransactionHistoryDTO(transactionHistoryOrigin));
+                //save history on destination account
+                transactionHistoryRepository.save(new TransactionHistoryDTO(transactionHistoryDestination));
                 msj = "Successful transfer.";
             }else{
                 msj = "The account does not have the funds to complete the transaction";

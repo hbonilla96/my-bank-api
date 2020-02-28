@@ -21,6 +21,8 @@ public class TransactionHistoryDTO {
     private int transferAmount;
     @Column(name = "transaction_date")
     private Date transactionDate;
+    @Column(name = "transfer_movement")
+    private String transferMovement;
 
     public TransactionHistoryDTO(){}
 
@@ -30,13 +32,15 @@ public class TransactionHistoryDTO {
         this.userId = transactionHistory.getUserId();
         this.transferAmount = transactionHistory.getTransferAmount();
         this.transactionDate = transactionHistory.getTransactionDate();
+        this.transferMovement = transactionHistory.getTransferMovement();
     }
 
-    public TransactionHistoryDTO(String accountNumber, String userId, int transferAmount, Date transactionDate) {
+    public TransactionHistoryDTO(String accountNumber, String userId, int transferAmount, Date transactionDate, String transferMovement) {
         this.accountNumber = accountNumber;
         this.userId = userId;
         this.transferAmount = transferAmount;
         this.transactionDate = transactionDate;
+        this.transferMovement = transferMovement;
     }
 
     public int getId() {
@@ -49,6 +53,10 @@ public class TransactionHistoryDTO {
 
     public String getUserId() {
         return userId;
+    }
+
+    public String getTransferMovement() {
+        return transferMovement;
     }
 
     public int getTransferAmount() {
@@ -77,5 +85,9 @@ public class TransactionHistoryDTO {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
+    }
+
+    public void setTransferMovement(String transferMovement) {
+        this.transferMovement = transferMovement;
     }
 }

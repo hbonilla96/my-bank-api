@@ -16,7 +16,7 @@ public interface TransactionHistoryRepository extends JpaRepository<TransactionH
     List<TransactionHistoryDTO> getTransactionHistoryDTOByAccountNumberAndUserId
             (@Param("accountNumber") String accountNumber, @Param("userId") String userId);
 
-    @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-01-01' and '2020-02-31' ")
+    @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-01-01' and '2020-01-31' ")
     String getExpensesForMonthJanuary(@Param("userId") String userId);
 
     @Query("select sum(t.transferAmount)  from TransactionHistoryDTO t where t.userId = :userId and t.transactionDate between '2020-02-01' and '2020-02-29'")

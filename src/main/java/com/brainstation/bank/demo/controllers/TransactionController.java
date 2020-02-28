@@ -19,12 +19,24 @@ public class TransactionController {
 
     @PostMapping
     public String doTransaction(@RequestBody Transaction transaction){
-        TransactionHistory transactionHistory = new TransactionHistory();
+        //origin account history
+
+        TransactionHistory transactionHistoryOrigin = new TransactionHistory();
         Date transactionDate = new Date();
-        transactionHistory.setAccountNumber(transaction.getOriginAccount());
-        transactionHistory.setTransferAmount(transaction.getTransferAmount());
-        transactionHistory.setUserId(transaction.getUserId());
-        transactionHistory.setTransactionDate(transactionDate);
-        return transactionService.doTransaction(transaction,transactionHistory);
+        transactionHistoryOrigin.setAccountNumber(transaction.getOriginAccount());
+        transactionHistoryOrigin.setTransferAmount(transaction.getTransferAmount());
+        transactionHistoryOrigin.setUserId(transaction.getUserId());
+        transactionHistoryOrigin.setTransactionDate(transactionDate);
+        transactionHistoryOrigin.setTransferMovement("debit");
+
+        //destination account history
+        TransactionHistory transactionHistoryDestination = new TransactionHistory();
+        transactionHistoryDestination.setAccountNumber(transaction.getDestinationAccount());
+        transactionHistoryDestination.setTransferAmount(transaction.getTransferAmount());
+        transactionHistoryDestination.setTransferMovement("credit");
+        transactionHistoryDestination.setTransactionDate(transactionDate);
+        transactionHistoryDestination.setUserId(transaction.getUserId());
+
+        return transactionService.doTransaction(transaction,transactionHistoryOrigin,transactionHistoryDestination);
     }
 }

@@ -8,15 +8,17 @@ public class TransactionHistory {
     private String userId;
     private int transferAmount;
     private Date transactionDate;
+    private String transferMovement;
 
     public TransactionHistory(){}
 
-    public TransactionHistory(int id, String accountNumber, String userId, int transferAmount, Date transactionDate) {
+    public TransactionHistory(int id, String accountNumber, String userId, int transferAmount, Date transactionDate, String transferMovement) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.userId = userId;
         this.transferAmount = transferAmount;
         this.transactionDate = transactionDate;
+        this.transferMovement = transferMovement;
     }
 
     public int getId() {
@@ -37,6 +39,10 @@ public class TransactionHistory {
 
     public int getTransferAmount() {
         return transferAmount;
+    }
+
+    public String getTransferMovement() {
+        return transferMovement;
     }
 
     public void setHId(int id) {
@@ -61,5 +67,9 @@ public class TransactionHistory {
 
     public void setTransferAmount(int transferAmount) {
         this.transferAmount = transferAmount;
+    }
+
+    public void setTransferMovement(String transferMovement) {
+        this.transferMovement = transferMovement;
     }
 }

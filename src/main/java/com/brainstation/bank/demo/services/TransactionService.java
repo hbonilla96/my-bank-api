@@ -6,5 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public abstract class TransactionService {
-    public abstract String doTransaction(Transaction transaction, TransactionHistory transactionHistory);
+    public abstract String doTransaction(Transaction transaction, TransactionHistory transactionHistoryOrigin,
+                                         TransactionHistory transactionHistoryDestination);
 }
