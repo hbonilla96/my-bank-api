@@ -28,11 +28,12 @@ public class UserController {
 
     @PostMapping
     public String save(@RequestBody User user) throws MessagingException {
-        user.setPassword(customPasswordGenerator.generatePassayPassword());
+        String password = (customPasswordGenerator.generatePassayPassword());
+        user.setPassword(password);
         user.setAge(userAge.getAge(user.getBirthDate()));
         userService.save(user);
-        email.sendEmail(user.getEmail(), "Welcome to myBank ","Hi " + user.getName() + " " + user.getLastName() + " " + "Your password is: " + customPasswordGenerator.generatePassayPassword());
-        return customPasswordGenerator.generatePassayPassword();
+        email.sendEmail(user.getEmail(), "Welcome to myBank ","Hi " + user.getName() + " " + user.getLastName() + " " + "Your password is: " + password);
+        return password;
     }
 
     @PutMapping("/update-password")
